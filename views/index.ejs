@@ -1,0 +1,50 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1><em>Tell Your Own Life Story</em></h1>
+    <h4>jumbotron 클래스는 페이지의 중요 콘텐츠를 줄여 표현하기 위한 공간입니다.</h4>
+    <h4>여기안에 container 클래스를 사용하면 적절한 여백을 유지하며 둥근 모서리를 제공합니다.</h4>
+    <div>
+     <a href="/edit" class="btn btn-primary btn-lg" id="btn-edit" aria-label="Left Align">
+        <span class="glyphicon glyphicon-pencil" aria-label="edit" aria-hidden="true"></span> 글 작성하러 가기...
+      </a>
+    </div>
+  </div>  
+</div>
+<!--글 리스트-->
+<div class="panel-group">
+  <% for(let i in diaries){%>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3><%=diaries[i].title%></h3>
+        <h5>
+          <%=moment(diaries[i].regdate).startOf('second').fromNow()%>
+        </h5>
+      </div>
+      <div class="panel-body"><%=diaries[i].contents%></div>
+      <div class="panel-footer">
+        <div class="row">   
+          <div class="text-left col-xs-6">
+            <%=moment(diaries[i].regdate).format('YYYY-MM-DD hh:mm:ss a')%>
+          </div>
+          <div class="text-right col-xs-6">
+            <div class="dropdown pull-right">
+                <span class="glyphicon glyphicon-option-horizontal dropdown-toggle" aria-label="setting" aria-hidden="true" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"></span>     
+              <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Setting</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="/edit/<%=diaries[i].id%>">Modify</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">History</a></li> 
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Info</a></li>           
+              </ul>
+            </div>       
+          </div>
+        </div>           
+      </div>
+    </div>
+  <%}%> 
+</div>
+
+
+
+
+
+
